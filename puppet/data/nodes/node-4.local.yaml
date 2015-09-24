@@ -1,0 +1,4 @@
+---
+topology: 
+  datacenter: DC2
+  rack: RAC1
