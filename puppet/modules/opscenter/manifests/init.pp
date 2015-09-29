@@ -1,10 +1,10 @@
 class opscenter {
   package { 'opscenter':
-    ensure => 'installed'
+    ensure => 'installed',
   }
 
   service { 'opscenterd':
-    ensure => 'running',
-    require => Package['opscenter']
+    ensure  => 'running',
+    require => Package['opscenter'],
   }
 }

@@ -1,7 +1,5 @@
 class cassandra {
-  include cassandra::setup
-  include cassandra::config
-  include cassandra::run
-
-  Class["cassandra::setup"] -> Class['cassandra::config'] -> Class["cassandra::run"]
+  class {"cassandra::setup": } ->
+  class {'cassandra::config': } ->
+  class {"cassandra::run": }
 }
