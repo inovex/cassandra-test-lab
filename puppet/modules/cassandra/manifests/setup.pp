@@ -1,5 +1,5 @@
 class cassandra::setup {
-  $packages = ['dsc22', 'cassandra-tools', 'datastax-agent']
+  $packages = ['cassandra-tools', 'datastax-agent']
   package { $packages:
     ensure  => 'present',
     require => [
@@ -10,7 +10,7 @@ class cassandra::setup {
 
   exec { 'cassandra-init-stop':
     command => "/bin/sh -c '/etc/init.d/cassandra stop'",
-    require => Package['dsc22'],
+    require => Package['datastax-agent'],
     unless  => '/usr/bin/test -f /var/lib/cassandra/data/.initialized_cassandra',
   }
 
@@ -26,7 +26,7 @@ class cassandra::setup {
     owner   => 'cassandra',
     group   => 'cassandra',
     mode    => '0775',
-    require => Package['dsc22'],
+    require => Package['datastax-agent'],
   }
 
   file { 'cassandra-init-marker':
